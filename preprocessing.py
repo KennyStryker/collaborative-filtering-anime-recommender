@@ -17,3 +17,14 @@ anime_df.dropna(inplace=True)
 
 tqdm.pandas()
 anime_df['name'] = anime_df['name'].progress_apply(text_cleaning)
+
+#Anime Genre Count
+
+type_count = anime_df['type'].value_counts()
+
+sns.barplot(x=type_count.values,
+            y=type_count.index,
+            palette='muted').set_title('Anime Types')
+
+plt.tight_layout()
+plt.show()
