@@ -38,3 +38,4 @@ for genres in anime_df['genre']:
 
 
 #Save DataFrame
+anime_df.to_csv("anime_df.csv")
