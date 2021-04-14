@@ -1,4 +1,5 @@
 import pandas as pd
+from collections import defaultdict
 from text_cleaning import text_cleaning
 from tqdm import tqdm
 import matplotlib.pyplot as plt
@@ -29,3 +30,8 @@ sns.barplot(x=type_count.values,
 plt.tight_layout()
 plt.show()'''
 
+all_genres = defaultdict(int)
+
+for genres in anime_df['genre']:
+    for genre in genres.split(','):
+        all_genres[genre.strip()] += 1
