@@ -1,7 +1,19 @@
 import pandas as pd
-import numpy as np
+from text_cleaning import text_cleaning
+from tqdm import tqdm
+import matplotlib.pyplot as plt
+import seaborn as sns
+import re
+import os
 
-anime_raw_data = pd.read_csv("dataset\\raw\\anime.csv")
-rating_raw_data = pd.read_csv("dataset\\raw\\rating.csv")
+rating = pd.read_csv('dataset/raw/rating.csv')
+anime_df = pd.read_csv('dataset/raw/anime.csv')
 
-print(anime_raw_data.head())
+#Data Cleaning
+
+null_features = anime_df.columns[anime_df.isna().any()]
+anime_df[null_features].isna().sum()
+anime_df.dropna(inplace=True)
+
+tqdm.pandas()
+anime_df['name'] = anime_df['name'].progress_apply(text_cleaning)
