@@ -4,8 +4,6 @@ from text_cleaning import text_cleaning
 from tqdm import tqdm
 import matplotlib.pyplot as plt
 import seaborn as sns
-import re
-import os
 
 rating = pd.read_csv('dataset/raw/rating.csv')
 anime_df = pd.read_csv('dataset/raw/anime.csv')
@@ -21,14 +19,14 @@ anime_df['name'] = anime_df['name'].progress_apply(text_cleaning)
 
 #Anime Genre Count Graph
 
-'''type_count = anime_df['type'].value_counts()
+type_count = anime_df['type'].value_counts()
 
 sns.barplot(x=type_count.values,
             y=type_count.index,
             palette='muted').set_title('Anime Types')
 
 plt.tight_layout()
-plt.show()'''
+plt.show()
 
 all_genres = defaultdict(int)
 
