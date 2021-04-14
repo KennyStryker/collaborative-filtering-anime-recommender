@@ -35,3 +35,6 @@ all_genres = defaultdict(int)
 for genres in anime_df['genre']:
     for genre in genres.split(','):
         all_genres[genre.strip()] += 1
+
+
+#Save DataFrame
